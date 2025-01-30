@@ -18,6 +18,14 @@ pnpm install
 pnpm dev
 ```
 
+### Run Storybook locally
+
+```sh
+pnpm storybook
+```
+
+Note: Storybook is running on http://localhost:6006
+
 ### Type-Check, Compile and Minify for Production
 
 ```sh
