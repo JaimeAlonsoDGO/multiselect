@@ -1,6 +1,18 @@
 # multiselect
 
-This template should help get you started developing with Vue 3 in Vite.
+A multi-select component for Vue.js.
+
+## Preview
+
+![Preview](image.png)
+
+## URL to Storybook
+
+https://storybook-multiselect.vercel.app/?path=/docs/multiselect--docs
+
+## URL to domain
+
+https://multiselect-lime.vercel.app/
 
 ## Recommended IDE Setup
 
