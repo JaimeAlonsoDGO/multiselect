@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown bg-white border rounded-md shadow-sm" tabindex="0">
+  <div class="dropdown bg-white border rounded-md shadow-sm" role="listbox" tabindex="0">
     <OptionList
       v-for="option in options"
       :key="option[keyField]?.toString()"

@@ -8,6 +8,9 @@
     <div
       class="flex flex-wrap items-center gap-2 border bg-white rounded-md p-2 active:border-blue-500 focus:border-blue-500"
       :class="{ 'border-2 border-blue-500': showDropdown }"
+      role="combobox"
+      :aria-expanded="showDropdown"
+      :aria-controls="dropdownListId"
       tabindex="0"
     >
       <SelectedItem
@@ -28,6 +31,7 @@
 
     <ListOptions
       v-if="showDropdown"
+      :id="dropdownListId"
       class="absolute z-10 top-full mt-2 w-full min-h-10"
       :options="filteredOptions"
       @select="selectOption"
@@ -58,6 +62,7 @@ import { useSearch } from '@/composables/useSearch'
 
 import { underlineMatch } from '@/utils/text'
 import { isNewOption } from '@/utils/options'
+import { uniqueRandomId } from '@/utils/random'
 
 const props = withDefaults(defineProps<MultiSelectProps>(), {
   options: () => [],
@@ -67,6 +72,7 @@ const props = withDefaults(defineProps<MultiSelectProps>(), {
   label: 'Select items',
 })
 
+const dropdownListId = uniqueRandomId('dropdown-list')
 const showDropdown = ref(false)
 const multiSelectRef = useTemplateRef('multiSelectRef')
 
