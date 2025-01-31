@@ -50,7 +50,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, useTemplateRef } from 'vue'
+import { ref, computed, onMounted, onUnmounted, useTemplateRef } from 'vue'
 
 import ListOptions from '@/components/ListOptions/ListOptions.vue'
 import SelectedItem from '@/components/SelectedItem/SelectedItem.vue'
@@ -96,11 +96,12 @@ onUnmounted(() => {
   document.removeEventListener('click', closeDropdown)
 })
 
+const hasAllSelected = computed(() => selectedOptions.value.length === props.options.length)
+
 const handleKeyDown = (event: KeyboardEvent) => {
   if (event.ctrlKey && event.key === 'a') {
     event.preventDefault()
-    const allSelected = selectedOptions.value.length === props.options.length
-    emit('update:modelValue', allSelected ? [] : [...props.options])
+    emit('update:modelValue', hasAllSelected.value ? [] : [...props.options])
   }
 }
 
