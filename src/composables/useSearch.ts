@@ -32,5 +32,5 @@ export function useSearch(
     return filtered
   })
 
-  return { searchTerm, filteredOptions }
+  return { searchTerm, filteredOptions, normalizedSearchTerm }
 }
