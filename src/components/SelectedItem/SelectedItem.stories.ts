@@ -6,7 +6,11 @@ const meta = {
   component: SelectedItem,
   tags: ['autodocs'],
   argTypes: {
-    label: {
+    id: {
+      control: { type: 'number' },
+      description: 'The id of the item',
+    },
+    name: {
       control: { type: 'text' },
       description: 'The label to display in the item',
     },
@@ -18,6 +22,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    label: 'Item 1',
+    id: 1,
+    name: 'Item 1',
   },
 }
