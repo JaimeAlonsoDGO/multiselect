@@ -96,12 +96,20 @@ onUnmounted(() => {
   document.removeEventListener('click', closeDropdown)
 })
 
-const hasAllSelected = computed(() => selectedOptions.value.length === props.options.length)
+const hasAllSelected = computed(
+  () => selectedOptions.value.length - newItemsSelected.value.length === props.options.length,
+)
+const newItemsSelected = computed(() =>
+  selectedOptions.value.filter((option) => isNewOption(option, props.keyField)),
+)
 
 const handleKeyDown = (event: KeyboardEvent) => {
   if (event.ctrlKey && event.key === 'a') {
     event.preventDefault()
-    emit('update:modelValue', hasAllSelected.value ? [] : [...props.options])
+    selectedOptions.value = hasAllSelected.value
+      ? []
+      : [...newItemsSelected.value, ...props.options]
+    emit('update:modelValue', selectedOptions.value)
   }
 }
 
